@@ -1,0 +1,71 @@
+.profileBox {
+    min-height: 100vh;
+    background: var(--secondary-theme);
+    padding: 30px;
+    border-radius: 30px 30px 0 0;
+}
+.profileMessage {
+    color: var(--secondary-theme);
+    text-align: left;
+    padding-left: 30px;
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.profileBox__profileImage {
+    width: 200px;
+    padding: 0;
+    margin: 0 auto;
+    height: 200px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.profileBox__profileImage img {
+    height: 100%
+}
+
+.profileBox__mainName {
+    font-size: 2.5rem;
+    color: var(--primary-theme)
+}
+
+.isActiveOption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.isActiveOption__label {
+    margin-top: 0;
+    color: var(--primary-theme)
+}
+
+.isActiveLabel {
+    text-align: left;
+    background: var(--toggle-theme);
+    color: var(--toggle-disabled-click);
+    padding: 10px;
+}
+
+.aboutYou__title {
+    color: var(--primary-theme);
+    text-align: left;
+}
+
+.aboutYou__title--mainTitle {
+    font-size: 2rem;
+}
+
+.aboutYou__title--biography {
+    font-size: 1rem;
+}
+
+.aboutYou__you {
+    text-align: left;
+    background: var(--toggle-theme);
+    color: var(--toggle-disabled-click);
+    padding: 10px;
+}

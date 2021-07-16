@@ -1,0 +1,11 @@
+.links {
+    text-align: right;
+    padding: 5px;
+    color: var(--secondary-theme);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.links a {
+    color: var(--secondary-theme)
+}

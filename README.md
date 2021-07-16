@@ -1,46 +1,184 @@
-# Getting Started with Create React App
+# Seta
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Uma aplicação focada em pessoas que querem conseguir o primeiro emprego.
+> Front(React + TypeScript) e Back (Python + Django) no mesmo repositório.
 
-## Available Scripts
+## Rotas
 
-In the project directory, you can run:
+`base_url` = "http://localhost:8000"
 
-### `yarn start`
+### Cadastro
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+__POST__ :`base_url`/accounts/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Corpo:
 
-### `yarn test`
+```json
+{
+    "first_name": "Nome",
+    "last_name": "Sobrenome",
+    "email": "email@email.com",
+    "password": "1234"
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> Obs: "email" e "contact" são únicos.
 
-### `yarn build`
+#### Resposta:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`status: 201`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```json
+{
+    "id": 1,
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Nome",
+    "last_name": "Sobrenome",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-07-16T02:03:54.996213Z",
+    "email": "email@email.com",
+    "biography": null,
+    "isVisible": true,
+    "contact": null
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Login
 
-### `yarn eject`
+__POST__ : `base_url`/login/
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Corpo:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```json
+{
+	"email": "email@email.com",
+	"password": "1234"
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Resposta:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`status: 200`
 
-## Learn More
+```json
+{
+    "token": "01119fe9cb766b1697cc4fb6acfd50b60087e211",
+    "id": 1,
+    "email": "email@email.com",
+    "first_name": "Nome",
+    "last_name": "Sobrenome",
+    "biography": null
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Usuário específico
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+__GET__ : `base_url`/< int:id >/
+
+#### Resposta:
+
+`status: 200`
+
+```json
+{
+  "id": 1,
+  "last_login": null,
+  "is_superuser": false,
+  "first_name": "Nome",
+  "last_name": "Sobrenome",
+  "is_active": true,
+  "date_joined": "2021-07-16T00:26:57.802932Z",
+  "email": "email@email.com",
+  "biography": null,
+  "isVisible": false,
+  "contact": null
+}
+```
+
+### Todos usuários
+
+__GET__ : `base_url`/accounts/
+
+#### Resposta:
+```json
+[
+  {
+    "id": 1,
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Nome",
+    "last_name": "Sobrenome",
+    "is_active": true,
+    "date_joined": "2021-07-16T00:26:57.802932Z",
+    "email": "email@email.com",
+    "biography": null,
+    "isVisible": false,
+    "contact": null
+  },
+  {
+    "id": 2,
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Patrick",
+    "last_name": "Estrela",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-07-16T02:03:54.996213Z",
+    "email": "howard@gmail.com",
+    "biography": null,
+    "isVisible": true,
+    "contact": "61999999999"
+  },
+"... e os outros usuários"
+]
+```
+
+### Atualizar
+
+__PUT__ : `base_url`/accounts/< int:id >/
+
+Header `2`:
+```js
+{
+    "Content-Type": "aplication/json",
+    "Authorization": "Token <token>"    
+}
+```
+
+#### Corpo:
+```json
+{
+  "first_name": "howard",
+  "contact": "61999999990"
+}
+```
+
+#### Resposta:
+
+`status: 200`
+
+```json
+{
+  "id": 1,
+  "last_login": null,
+  "is_superuser": false,
+  "first_name": "howard",
+  "last_name": "Sobrenome",
+  "is_active": true,
+  "date_joined": "2021-07-16T00:26:57.802932Z",
+  "email": "email@email.com",
+  "biography": null,
+  "isVisible": false,
+  "contact": "61999999990"
+}
+```
+
+### Deletar
+
+__DELETE__ : `base_url`/accounts/< int:id >/
+
+#### Resposta:
+
+`status: 204`

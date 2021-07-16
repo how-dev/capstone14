@@ -1,0 +1,55 @@
+.interruptorBox {
+    display: inline-block;
+}
+
+.interruptorBox__message--disabled {
+    font-size: .7rem;
+    color: rgba(0, 0, 0, 0.42);
+    transition: .3s;
+}
+
+.interruptorBox__message--enabled {
+    font-size: .7rem;
+    color: var(--primary-theme);
+    transition: .3s;
+}
+
+.interruptor {
+    width: 50px;
+    height: 25px;
+    background: var(--toggle-theme);
+    border-radius: 200px;
+    position: relative;
+    transition: .3s;
+}
+
+.interruptor__disabled {
+    width: 50px;
+    height: 25px;
+    background: var(--toggle-disabled-click);
+    border-radius: 200px;
+    position: relative;
+    transition: .3s;
+}
+
+.interruptor__false {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: var(--primary-theme);
+    top: -12%;
+    right: 0;
+    border-radius: 100%;
+    transition: .3s;
+}
+
+.interruptor__true {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: var(--toggle-disabled);
+    top: -12%;
+    right: 20px;
+    border-radius: 100%;
+    transition: .3s;
+}

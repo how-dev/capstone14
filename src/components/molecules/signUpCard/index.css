@@ -1,0 +1,38 @@
+.signUpBox {
+    min-height: 500px;
+    border-radius: 30px;
+    margin-top: 20px;
+    background: var(--secondary-theme);
+    padding: 30px;
+}
+
+.titleSignUp {
+    margin: 0;
+    font-size: 3rem;
+    color: var(--primary-theme)
+}
+
+.signUpBox__form {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.signUpBox__form p {
+    margin: 0;
+    color: var(--toggle-disabled-click)
+}
+
+.signUpBox__form p a {
+    color: var(--primary-theme)
+}
+
+.signUpBox__errorMessage {
+    margin: 0;
+    height: 2px;
+}
+
+.signUpBox__errorMessage a {
+    color: var(--primary-theme)
+}

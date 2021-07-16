@@ -1,0 +1,17 @@
+.textFieldBox {
+    display: flex;
+    justify-content: center;
+}
+.textFieldBox__input {
+    outline: none;
+    border: 0;
+    background: rgba(0, 0, 0, 0.05);
+    height: 50px;
+    width: 100%;
+    font-size: 1.2rem;
+    padding-left: 10px;
+}
+
+.textFieldBox__input::placeholder {
+    color: rgba(0, 41, 255, 0.2);
+}

@@ -1,0 +1,43 @@
+.userBox {
+    background: var(--toggle-theme);
+    padding: 20px;
+    border-radius: 30px;
+    margin: 60px 0;
+}
+
+.userBox__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userBox__top figure {
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.userBox__top figure img {
+    height: 100%;
+}
+
+.aboutThey h2 {
+    color: var(--primary-theme)
+}
+
+.aboutThey p {
+    text-align: left;
+    color: var(--primary-theme)
+}
+
+.userBox__bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.userBox__bottom a {
+    width: 40%;
+}
