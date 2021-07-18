@@ -38,11 +38,9 @@ const HomeCard = () => {
                 Conheça nossos usuários
             </h2>
             <p className="homeContent__paragraph">
-                <p className="homeContent__paragraph">
-                    Atualmente nossa rede conta com {qtdUsers} usuários ativos! Quer saber quem está fazendo parte disso?
-                </p>
-                <ButtonField content={"É só clicar aqui"} action={"/all/"} />
+                Atualmente nossa rede conta com {qtdUsers} usuários ativos! Quer saber quem está fazendo parte disso?
             </p>
+            <ButtonField content={"É só clicar aqui"} action={"/all/"} />
         </section>
     )
 }

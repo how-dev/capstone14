@@ -7,12 +7,17 @@ import defaultImage from "../../../imgs/default.jpg";
 import { SetProfileVisibility, ChangeAbout } from "../../../requisitions";
 import TextField from "../../atoms/textField";
 import ButtonField from "../../atoms/buttonField";
+import SnackBarUI from "../../atoms/snackBarUI";
 import { useForm } from "react-hook-form";
-import SignInUpOut from "../../atoms/signInUpOut";
 
 const ProfileCard:React.FC = () => {
     const history = useHistory()
     const [user, setUser] = useState({id: 0, first_name: "", last_name: "", biography: "", contact: "", email: "", isVisible: true})
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
 
     const { handleSubmit, setValue } = useForm()
 
@@ -25,7 +30,7 @@ const ProfileCard:React.FC = () => {
 
     useEffect(() => {
         axios.get(`http://localhost:8000/accounts/${userId}/`).then(res => {setUser(res.data)})
-    }, [])
+    }, [userId])
 
     const partialUpdate = (data: any) => {
         ChangeAbout(userId, token, data, setUser)
@@ -91,10 +96,13 @@ const ProfileCard:React.FC = () => {
                                 setUser({...user, email: e.target.value} )
                                 setValue("email", e.target.value)
                             }}/>
-                            <ButtonField content={"Atualizar"} />
+                            <br/>
+                            <br/>
+                            <ButtonField content={"Atualizar"} func={handleClick}/>
                         </form>
                     </section>
 
+                    <SnackBarUI open={open} setOpen={setOpen} />
 
                 </main>
             </>

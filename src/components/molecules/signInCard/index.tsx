@@ -37,7 +37,7 @@ const SignInCard:React.FC = () => {
                         setError(false)
                         setValue("password", e.target.value)
                     }}/>
-                    <ButtonField content={"Entrar"} />
+                    <ButtonField content={"Entrar"} action={true}/>
                     <p>Ou <a href="http://localhost:3000/signup/">cadastre-se</a></p>
                 </form>
                 <p className="loginBox__errorMessage">{error && "Poxa, há algo de errado no seu login =("}</p>

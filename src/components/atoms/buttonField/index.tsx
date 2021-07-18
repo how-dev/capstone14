@@ -4,7 +4,7 @@ import "./index.css"
 
 interface Props {
     content: string,
-    action?: string,
+    action?: any,
     func?: any
 }
 
@@ -14,7 +14,7 @@ const ButtonField:React.FC<Props> = ({ content, action, func }) => {
     return (
         <input
             type="submit"
-            onClick={() => {action && history.push(action)}}
+            onClick={() => {action ? history.push(action) : func()}}
             className="buttonBox__button"
             value={content}
         />

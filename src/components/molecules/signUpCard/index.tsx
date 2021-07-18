@@ -49,7 +49,7 @@ const SignUpCard:React.FC = () => {
                     setError({...error, isError: false})
                     setValue("biography", e.target.value);
                 }}/>
-                <ButtonField content={"Cadastrar"} />
+                <ButtonField content={"Cadastrar"} action={true}/>
                 <p>Já tem cadastro? É só <a href="http://localhost:3000/login/">entrar!</a></p>
                 <p className="signUpBox__errorMessage">
                     {error.isError && error.message}{error.message === "Email já existente, " && error.isError && <a href="http://localhost:3000/login/" >Faça login!</a>}
