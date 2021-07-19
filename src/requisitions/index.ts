@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const baseUrl = "http://localhost:8000"
+
 export const SignUpRequisition = (data: any, errorFunc: any, error: any, history: any) => {
     let datas = Object.keys(data)
     let entries = ["email", "password", "first_name", "last_name", "biography"]
@@ -12,10 +14,10 @@ export const SignUpRequisition = (data: any, errorFunc: any, error: any, history
         }
     })
     if (condition) {
-        axios.post("http://localhost:8000/accounts/", {...data}).then((res: any) => {
+        axios.post(`${baseUrl}/accounts/`, {...data}).then(() => {
             errorFunc({isError: false, message: error.message})
             history.push("/login/")
-        }).catch(error => {
+        }).catch(() => {
             errorFunc({isError: true, message: "Email já existente"})
         })
     } else {
@@ -24,7 +26,7 @@ export const SignUpRequisition = (data: any, errorFunc: any, error: any, history
 }
 
 export const SignInRequisition = (data: any, history: any, errorFunc: any) => {
-    axios.post("http://localhost:8000/login/", {...data}).then((res: any) => {
+    axios.post(`${baseUrl}/login/`, {...data}).then((res: any) => {
         let response = res.data
         let token = response.token
         let first_name = response.first_name
@@ -35,13 +37,13 @@ export const SignInRequisition = (data: any, history: any, errorFunc: any) => {
         localStorage.setItem("ln@SETA", last_name)
         localStorage.setItem("id@SETA", id)
         history.push("/profile/")
-    }).catch(error => {
+    }).catch(() => {
         errorFunc(true)
     })
 }
 
 export const SetProfileVisibility = (id: any, token: any, setUser: any, isVisible: boolean) => {
-    axios.put(`http://localhost:8000/accounts/${id}/`, { isVisible: !isVisible }, {
+    axios.put(`${baseUrl}/accounts/${id}/`, { isVisible: !isVisible }, {
         headers: {"Authorization": "Token " + token}
     }).then((res: any) => {
         setUser(res.data)
@@ -49,7 +51,7 @@ export const SetProfileVisibility = (id: any, token: any, setUser: any, isVisibl
 }
 
 export const ChangeAbout = (id: any, token: any, property: any, setUser: any) => {
-    axios.put(`http://localhost:8000/accounts/${id}/`, property, {
+    axios.put(`${baseUrl}/accounts/${id}/`, property, {
         headers: {"Authorization": "Token " + token}
     }).then((res: any) => {
         setUser(res.data)

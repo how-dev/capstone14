@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, useHistory } from "react-router-dom"
 import Routes from "./routes"
 import "./App.css"
+import ChatIcon from "./components/chat/atoms/chatIcon";
 
 const App:React.FC = () => {
     const history = useHistory()
@@ -16,6 +17,7 @@ const App:React.FC = () => {
             <Switch>
                 <Routes />
             </Switch>
+            <ChatIcon />
         </main>
     )
 }

@@ -12,6 +12,9 @@ import { useForm } from "react-hook-form";
 
 const ProfileCard:React.FC = () => {
     const history = useHistory()
+    if (!localStorage.getItem("token@SETA")) {
+        history.push("/")
+    }
     const [user, setUser] = useState({id: 0, first_name: "", last_name: "", biography: "", contact: "", email: "", isVisible: true})
     const [open, setOpen] = React.useState(false);
 
@@ -20,10 +23,6 @@ const ProfileCard:React.FC = () => {
     };
 
     const { handleSubmit, setValue } = useForm()
-
-    if (!localStorage.getItem("token@SETA")) {
-        history.push("/")
-    }
 
     const userId = localStorage.getItem("id@SETA")
     const token = localStorage.getItem("token@SETA")
